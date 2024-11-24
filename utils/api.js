@@ -32,7 +32,7 @@ export async function fetchPersonById(id) {
 
 export async function addPerson(personData) {
     try {
-        const response = await fetch(`${API_BASE_URL}/person`, {
+        const response = await fetch(`${API_BASE_URL}/people`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(personData),
@@ -60,7 +60,7 @@ export async function updatePerson(id, updatedPerson) {
 
 export async function deletePerson(id) {
     try {
-        const response = await fetch(`${API_BASE_URL}/person/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/people/${id}`, {
             method: 'DELETE',
         });
         if (!response.ok) throw new Error('Failed to delete person');
