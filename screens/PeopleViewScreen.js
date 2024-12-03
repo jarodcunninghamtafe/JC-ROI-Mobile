@@ -41,11 +41,11 @@ export default function PeopleViewScreen(props) {
 
     const fetchData = async () => {
         try {
-            const data = await fetchPeople();
+            const data = await fetchPeople(setOffline); //offline mode
             setPeople(data);
         } catch (err) {
             console.error(err);
-            setOffline(true);
+            setOffline(true); //offline mode
             setError("Unable to fetch data, offline mode");
         }
     };
@@ -118,6 +118,21 @@ export default function PeopleViewScreen(props) {
 
     return (
         <Surface style={{ flex: 1, padding: 16 }} mode="flat" elevation={1}>
+            {/* offline mode */}
+            {offline && (
+                <View
+                    style={{
+                        backgroundColor: theme.colors.error,
+                        alignItems: "center",
+                        marginBottom: 10,
+                        borderRadius: 5,
+                    }}
+                >
+                    <Text variant="bodyLarge" style={{ color: theme.colors.onError, paddingVertical: 12 }}>
+                        Offline Mode
+                    </Text>
+                </View>
+            )}
             <Text
                 variant="headlineLarge"
                 style={{
@@ -193,6 +208,8 @@ export default function PeopleViewScreen(props) {
                                             onPress={() => {
                                                 showEditPerson(person.id);
                                             }}
+                                            // offline mode
+                                            disabled={offline}
                                         />
                                     </View>
                                     <View
@@ -213,6 +230,8 @@ export default function PeopleViewScreen(props) {
                                                     person.name
                                                 );
                                             }}
+                                            // offline mode
+                                            disabled={offline}
                                         />
                                     </View>
                                 </View>

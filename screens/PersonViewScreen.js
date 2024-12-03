@@ -40,12 +40,13 @@ export default function PersonViewScreen(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await fetchPersonById(id);
+                const data = await fetchPersonById(id, setOffline); // offline mode
                 setPerson(data);
-                console.log(data);
+                console.log("view person", data);
+                console.log("id", id);
             } catch (err) {
                 console.error(err);
-                setOffline(true);
+                setOffline(true); // offline mode
                 setError("Unable to fetch data, offline mode");
             }
         };

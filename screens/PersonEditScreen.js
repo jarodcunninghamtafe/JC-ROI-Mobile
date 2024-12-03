@@ -56,24 +56,25 @@ export default function PersonEditScreen(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const fetchedDepartment = await fetchDepartments();
-                setDepartments(fetchedDepartment);
-                setSelectedDepartment(fetchedDepartment[0].id);
+                const fetchedDepartments = await fetchDepartments(setOffline); // offline mode
+                setDepartments(fetchedDepartments);
+                setSelectedDepartment(fetchedDepartments[0].id);
+
                 if (id !== -1) {
-                    const data = await fetchPersonById(id);
+                    const data = await fetchPersonById(id, setOffline); // offline mode
                     setPerson(data);
-                    setSelectedDepartment(data.departmentId);
-                    console.log(data);
+                    setSelectedDepartment(data.departmentId); // Set initial category
+                    console.log("edit person", data);
+                    console.log(data.departmentId);
                 } else {
-                    console.log(person);
+                    console.log("new person", person);
                 }
             } catch (err) {
                 console.error(err);
-                setOffline(true);
+                setOffline(true); // offline mode
                 setError("Unable to fetch data, offline mode");
             }
-        };
-        fetchData();
+        }
     }, []);
 
     function showPeopleView() {
