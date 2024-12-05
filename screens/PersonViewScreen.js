@@ -57,7 +57,7 @@ export default function PersonViewScreen(props) {
     if (!person) {
         return (
             <View style={{ flex: 1, justifyContent: "center" }}>
-                <Text>Loading person data</Text>
+                <Text style={{ fontFamily: "Trebuchet MS" }}>Loading person data</Text>
             </View>
         );
     }
@@ -75,64 +75,70 @@ export default function PersonViewScreen(props) {
                     marginBottom: 24,
                     fontWeight: "bold",
                     color: theme.colors.primary,
+                    fontFamily: "Trebuchet MS"
                 }}
             >
                 {person.name}
             </Text>
-            <View style={{ flex: 1, marginTop: 24 }}>
-                {[
-                    { label: "Phone:", value: person.phone },
-                    { label: "Street:", value: person.street },
-                    { label: "City:", value: person.city },
-                    { label: "State:", value: person.state },
-                    { label: "Zip:", value: person.zip },
-                    { label: "Country:", value: person.country },
-                    { label: "Department:", value: person.Department?.name },
-                ].map(({ label, value }, index) => (
-                    <View
-                        key={index}
-                        style={{ marginBottom: 20, paddingHorizontal: 12 }}
-                    >
-                        <Text
-                            variant="bodyMedium"
-                            style={{
-                                fontWeight: "bold",
-                                marginBottom: 6,
-                                color: "#5D5D5D",
-                                fontSize: 16,
-                            }}
+            <ScrollView
+                style={{ flex: 1 }}
+                contentContainerStyle={{ paddingBottom: 34 }}
+            >
+                <View style={{ flex: 1, marginTop: 24 }}>
+                    {[
+                        { label: "Phone:", value: person.phone },
+                        { label: "Street:", value: person.street },
+                        { label: "City:", value: person.city },
+                        { label: "State:", value: person.state },
+                        { label: "Zip:", value: person.zip },
+                        { label: "Country:", value: person.country },
+                        { label: "Department:", value: person.Department?.name },
+                    ].map(({ label, value }, index) => (
+                        <View
+                            key={index}
+                            style={{ marginBottom: 20, paddingHorizontal: 12 }}
                         >
-                            {label}
-                        </Text>
-                        <Text
-                            variant="bodyMedium"
-                            style={{
-                                color: "#2C3E50",
-                                fontSize: 14,
-                                lineHeight: 22,
-                                paddingBottom: 10,
-                                borderBottomWidth: 1,
-                                borderBottomColor: "#BDC3C7",
-                            }}
-                        >
-                            {value}
-                        </Text>
-                    </View>
-                ))}
-            </View>
+                            <Text
+                                variant="bodyMedium"
+                                style={{
+                                    fontWeight: "bold",
+                                    marginBottom: 6,
+                                    color: "#5D5D5D",
+                                    fontSize: 16,
+                                    fontFamily: "Trebuchet MS"
+                                }}
+                            >
+                                {label}
+                            </Text>
+                            <Text
+                                variant="bodyMedium"
+                                style={{
+                                    color: "#2C3E50",
+                                    fontSize: 14,
+                                    lineHeight: 22,
+                                    paddingBottom: 10,
+                                    borderBottomWidth: 1,
+                                    borderBottomColor: "#BDC3C7",
+                                    fontFamily: "Trebuchet MS"
+                                }}
+                            >
+                                {value}
+                            </Text>
+                        </View>
+                    ))}
+                </View>
 
-            <View style={{ padding: 10 }}>
-                <Button
-                    mode="contained"
-                    icon="keyboard-return"
-                    onPress={showPeopleView}
-                    style={{
-                        width: "100%",
-                    }}
-                >
-                    Go Back
-                </Button>
-            </View>
+                <View style={{ padding: 10, flexDirection: "row" }}>
+                    <Button
+                        mode="outlined"
+                        icon="keyboard-return"
+                        onPress={showPeopleView}
+                        style={{justifyContent: "flex-end"}}
+                    >
+                        Go Back
+                    </Button>
+                </View>
+            </ScrollView>
         </Surface>
     );
 }

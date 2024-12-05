@@ -20,7 +20,7 @@ export default function MainNavigator() {
                 options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialIcons name='home' color={color} size={size} />
+                        <MaterialIcons name='home' color={color} size={26} style={{ top: -4 }} />
                     ),
                 }}
             />
@@ -30,7 +30,7 @@ export default function MainNavigator() {
                 options={{
                     tabBarLabel: 'Staff',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialIcons name='groups' color={color} size={size} />
+                        <MaterialIcons name='groups' color={color} size={26} style={{ top: -4 }} />
                     ),
                 }}
             />
@@ -40,7 +40,7 @@ export default function MainNavigator() {
                 options={{
                     tabBarLabel: 'Help',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialIcons name='help' color={color} size={size} />
+                        <MaterialIcons name='help' color={color} size={26} style={{ top: -4 }} />
                     ),
                 }}
             />

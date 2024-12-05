@@ -8,7 +8,7 @@ import { Dropdown } from "react-native-paper-dropdown";
 export default function NotFoundScreen(props) {
     return (
         <Surface style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text variant='displaySmall'>NotFoundScreen</Text>
+            <Text variant='displaySmall' style={{ fontFamily: "Trebuchet MS"}}>NotFoundScreen</Text>
         </Surface>
     )
 }

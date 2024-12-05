@@ -75,6 +75,7 @@ export default function PersonEditScreen(props) {
                 setError("Unable to fetch data, offline mode");
             }
         }
+        fetchData();
     }, []);
 
     function showPeopleView() {
@@ -126,7 +127,7 @@ export default function PersonEditScreen(props) {
     }
 
     if (!departments || departments.length === 0) {
-        return <Text>No departments available.</Text>; // Or handle accordingly
+        return <Text style={{ fontFamily: "Trebuchet MS"}}>No departments available.</Text>; // Or handle accordingly
     }
 
     return (
@@ -138,6 +139,7 @@ export default function PersonEditScreen(props) {
                     marginBottom: 24,
                     fontWeight: "bold",
                     color: theme.colors.primary,
+                    fontFamily: "Trebuchet MS"
                 }}
             >
                 {id === -1 ? "New Person" : person.name}
@@ -195,20 +197,20 @@ export default function PersonEditScreen(props) {
                     style={{ marginBottom: 16 }}
                 />
                 <TextInput
-                    label="Country"
-                    value={person.country}
+                    label="State"
+                    value={person.state}
                     onChangeText={(text) =>
-                        setPerson({ ...person, country: text })
+                        setPerson({ ...person, state: text })
                     }
                     mode="outlined"
                     keyboardType="numeric"
                     style={{ marginBottom: 16 }}
                 />
                 <TextInput
-                    label="State"
-                    value={person.state}
+                    label="Country"
+                    value={person.country}
                     onChangeText={(text) =>
-                        setPerson({ ...person, state: text })
+                        setPerson({ ...person, country: text })
                     }
                     mode="outlined"
                     keyboardType="numeric"
@@ -231,7 +233,7 @@ export default function PersonEditScreen(props) {
                         padding: 10,
                     }}
                 >
-                    <View style={{ flex: 1, marginHorizontal: 10 }}>
+                    <View style={{ marginHorizontal: 10 }}>
                         <Button
                             mode="outlined"
                             icon="keyboard-return"
@@ -240,7 +242,7 @@ export default function PersonEditScreen(props) {
                             Cancel
                         </Button>
                     </View>
-                    <View style={{ flex: 1, marginHorizontal: 10 }}>
+                    <View style={{ marginHorizontal: 10 }}>
                         <Button
                             mode="contained"
                             icon="update"

@@ -68,10 +68,6 @@ export default function PeopleViewScreen(props) {
         props.navigation.navigate("PersonViewScreen", { id: id });
     }
 
-    function handleDeletePerson(id) {
-        console.log(id);
-    }
-
     async function handleDelete() {
         if (selectedPersonId !== null) {
             try {
@@ -128,7 +124,7 @@ export default function PeopleViewScreen(props) {
                         borderRadius: 5,
                     }}
                 >
-                    <Text variant="bodyLarge" style={{ color: theme.colors.onError, paddingVertical: 12 }}>
+                    <Text variant="bodyLarge" style={{ color: theme.colors.onError, paddingVertical: 12, fontFamily: "Trebuchet MS" }}>
                         Offline Mode
                     </Text>
                 </View>
@@ -140,6 +136,7 @@ export default function PeopleViewScreen(props) {
                     marginBottom: 24,
                     fontWeight: "bold",
                     color: theme.colors.primary,
+                    fontFamily: "Trebuchet MS"
                 }}
             >
                 Staff Directory
@@ -171,17 +168,17 @@ export default function PeopleViewScreen(props) {
                             >
                                 <Avatar.Icon
                                     size={48}
-                                    icon="folder-open-outline"
+                                    icon="account"
                                 />
                             </TouchableOpacity>
                         </View>
                         <View style={{ flex: 1, marginLeft: 10, padding: 10 }}>
                             {/* Main Content */}
-                            <Text variant="titleMedium">{person.name}</Text>
-                            <Text variant="titleMedium">
+                            <Text variant="titleMedium" style={{ fontFamily: "Trebuchet MS"}}>{person.name}</Text>
+                            <Text variant="titleSmall" style={{ fontFamily: "Trebuchet MS"}}>
                                 {person.Department.name}
                             </Text>
-                            <Text variant="titleMedium">{person.phone}</Text>
+                            <Text variant="labelMedium" style={{ fontFamily: "Trebuchet MS"}}>{person.phone}</Text>
                         </View>
                         <View>
                             {/* Action Buttons */}
@@ -257,8 +254,8 @@ export default function PeopleViewScreen(props) {
                 <Dialog visible={visible} onDismiss={hideDialog}>
                     <Dialog.Title>Confirm Deletion</Dialog.Title>
                     <Dialog.Content>
-                        <Text>Are you sure you want to delete?</Text>
-                        <Text style={{ fontWeight: "bold" }}>
+                        <Text style={{ fontFamily: "Trebuchet MS"}}>Are you sure you want to delete?</Text>
+                        <Text style={{ fontWeight: "bold", fontFamily: "Trebuchet MS" }}>
                             {selectedPersonName}
                         </Text>
                     </Dialog.Content>
